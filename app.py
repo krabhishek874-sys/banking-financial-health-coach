@@ -4,7 +4,7 @@ import plotly.express as px
 
 st.set_page_config(page_title="AI Financial Health Coach",layout="wide")
 
-df=pd.read_csv("data/transactions.csv")
+df=pd.read_csv("transactions.csv")
 balance=df["Amount"].sum()
 expenses=df[df["Amount"]<0]
 summary=expenses.groupby("Category")["Amount"].sum().abs()
