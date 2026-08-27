@@ -275,4 +275,106 @@ if max_txn > avg_txn * 3:
 
     st.warning(
         f"""
-    
+        ⚠ Potential Fraud Alert
+
+        Unusual transaction detected.
+
+        Transaction Amount: ₹{max_txn:,}
+
+        Typical Amount: ₹{avg_txn:,}
+        """
+    )
+
+else:
+
+    st.success("No suspicious activity detected.")
+
+st.divider()
+
+# -----------------------------
+# EXECUTIVE INSIGHTS
+# -----------------------------
+
+st.subheader("📊 Executive Insights")
+
+st.success(f"""
+• Financial Health Score: {score}/100
+
+• Estimated Savings Opportunity: ₹{savings_potential:,}
+
+• Predicted Month-End Balance: ₹{predicted_balance:,}
+
+• Top Recommendation: {product}
+
+• Risk Level: {risk}
+""")
+
+st.divider()
+
+# -----------------------------
+# AI ADVISOR
+# -----------------------------
+
+st.subheader("🤖 AI Financial Advisor")
+
+question = st.text_input(
+    "Ask a financial question"
+)
+
+if question:
+
+    q = question.lower()
+
+    if "vacation" in q:
+
+        response = f"""
+        Based on your current balance of ₹{balance:,}
+        and projected month-end balance of ₹{predicted_balance:,},
+
+        You can plan a vacation if discretionary
+        spending is reduced by approximately
+        ₹5,000 this month.
+        """
+
+    elif "save" in q:
+
+        response = f"""
+        You have an estimated savings opportunity
+        of ₹{savings_potential:,}.
+
+        Reducing shopping and travel spend can
+        improve your financial health score.
+        """
+
+    elif "card" in q:
+
+        response = f"""
+        Recommended Product:
+
+        {product}
+
+        Reason:
+
+        {reason}
+        """
+
+    else:
+
+        response = """
+        Based on your transaction behavior,
+        your financial health is stable.
+
+        Continue monitoring discretionary
+        spending and follow personalized
+        recommendations for improved savings.
+        """
+
+    st.info(response)
+
+# -----------------------------
+# FOOTER
+# -----------------------------
+
+st.caption(
+    "AI Financial Health Coach | Banking Hackathon Prototype"
+)
